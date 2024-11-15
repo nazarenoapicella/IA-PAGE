@@ -46,27 +46,23 @@ def inicializar_estado():
         st.session_state.mensajes = []
 
 def configurar_pagina():
-    #CAMBIAR NOMBRE DE PESTAÑA
     st.set_page_config("Mi chat AI")
-    #AGREGAMOS UN TITULO
+
     st.title("Chat Bot")
-    #AGREGAR SIDEBAR
+
     st.sidebar.title("Sidebar de modelos")
     m = st.sidebar.selectbox("Modelos", MODELOS, index = 0)
     return m
 
 def main():
-    #LLAMAMOS AL ESTADO DE MENSAJE
+
     inicializar_estado()
-    #CREAMOS UN USUARIO A PARTIR DE LA CLAVE_API
+
     usuario = crear_usuario_groq()
-    #CONFIGURAMOS LA PAGINA Y SELECCIONAMOS UN MODELO
+  
     modelo_actual = configurar_pagina()
-    #LLAMO AL AREA DEL CHAT
     area_de_chat()
-    #CREAMOS EL CHAT BOT
     mensaje = st.chat_input("Escribí tu mensaje:")
-    #PROCESAR UNA RESPUESTA A PARTIR DE UN MODELO ELEGIDO
     respuesta_chat_bot = ""
     
     if mensaje:
